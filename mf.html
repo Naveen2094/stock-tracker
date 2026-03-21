@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mutual Fund Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <div class="page-head">
+    <div>
+      <h2>Mutual Fund Portfolio</h2>
+      <p style="color: #aaa; font-size: 13px; margin-top: -10px;">
+        NAV updates once daily (after market close)
+      </p>
+      <div id="welcomeUser"></div>
+    </div>
+    <div class="top-bar">
+      <button onclick="goToStocks()">Switch to Stocks</button>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+      <button onclick="refreshPrices()">Refresh</button>
+      <button onclick="downloadExcel()">Export Excel</button>
+      <button onclick="downloadPDF()">Export PDF</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div id="lastUpdated"></div>
+  <p id="loadingText" style="color: gray; display: none;">Loading your portfolio...</p>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <input id="ticker" placeholder="Search fund by name or AMFI code">
+      <div id="suggestions" class="dropdown"></div>
+    </div>
+    <label for="type">Type:</label>
+    <select id="type">
+      <option>Large Cap</option>
+      <option>Mid Cap</option>
+      <option>Small Cap</option>
+      <option>Index Fund</option>
+      <option>ETF</option>
+      <option>Hybrid</option>
+      <option>Debt</option>
+    </select>
+    <input id="qty" placeholder="Qty">
+    <input id="buy" placeholder="Buy Price">
+    <button onclick="addStock()">Add</button>
+    <button onclick="clearAll()">Clear All</button>
+    <input type="file" id="excelFile" accept=".xlsx, .xls">
+    <button onclick="importExcel()">Import Excel</button>
+  </div>
+
+  <div id="importStatus"></div>
+  <div id="progress"></div>
+  <div id="progressBarContainer" style="display:none;">
+    <div id="progressBar"></div>
+  </div>
+
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Fund</th>
+        <th>NAV</th>
+        <th>NAV Date</th>
+        <th>Type</th>
+        <th>Units</th>
+        <th>Buy</th>
+        <th>Investment</th>
+        <th>Value</th>
+        <th>P/L</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2 id="summary"></h2>
+  <div id="failedList"></div>
+</div>
+
+<script type="module" src="mf.js"></script>
+</body>
+</html>
