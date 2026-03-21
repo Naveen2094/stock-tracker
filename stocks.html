@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <div class="page-head">
+    <div>
+      <h2>Stock Portfolio</h2>
+      <div id="welcomeUser"></div>
+    </div>
+    <div class="top-bar">
+      <button onclick="goToMF()">Switch to MF</button>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+      <button onclick="refreshPrices()">Refresh</button>
+      <button onclick="downloadExcel()">Export Excel</button>
+      <button onclick="downloadPDF()">Export PDF</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div id="lastUpdated"></div>
+  <p id="loadingText" style="color: gray; display: none;">Loading your portfolio...</p>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <input id="ticker" placeholder="Search stock (e.g. ITC)">
+      <div id="suggestions" class="dropdown"></div>
+    </div>
+    <input id="qty" placeholder="Qty">
+    <input id="buy" placeholder="Buy Price">
+    <button onclick="addStock()">Add</button>
+    <button onclick="clearAll()">Clear All</button>
+    <input type="file" id="excelFile" accept=".xlsx, .xls">
+    <button onclick="importExcel()">Import Excel</button>
+  </div>
+
+  <div id="importStatus"></div>
+  <div id="progress"></div>
+  <div id="progressBarContainer" style="display:none;">
+    <div id="progressBar"></div>
+  </div>
+
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Stock</th>
+        <th>CMP</th>
+        <th>Open</th>
+        <th>Close</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>52W High</th>
+        <th>52W Low</th>
+        <th>Qty</th>
+        <th>Buy</th>
+        <th>Investment</th>
+        <th>Value</th>
+        <th>P/L</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2 id="summary"></h2>
+  <div id="failedList"></div>
+</div>
+
+<script type="module" src="stocks.js"></script>
+</body>
+</html>
