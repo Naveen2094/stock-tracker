@@ -2,15 +2,39 @@ body {
   font-family: Arial;
   padding: 20px;
   background: #f4f6f8;
+  color: #111;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
+}
+
+#loginScreen {
+  max-width: 360px;
+  margin: 60px auto;
+  padding: 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .controls {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.top-bar {
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 .search-wrap {
@@ -19,6 +43,11 @@ h1 {
 }
 
 input {
+  padding: 8px;
+  margin: 5px;
+}
+
+select {
   padding: 8px;
   margin: 5px;
 }
@@ -60,6 +89,27 @@ th {
   margin-top: 20px;
 }
 
+#importStatus,
+#progress,
+#welcomeUser,
+#lastUpdated {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+#progressBarContainer {
+  width: 100%;
+  background: #ddd;
+  height: 10px;
+  margin-top: 5px;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background: green;
+}
+
 .dropdown {
   position: absolute;
   background: white;
@@ -80,4 +130,56 @@ th {
 
 .dropdown div:hover {
   background: #f0f0f0;
+}
+
+body.dark {
+  background: #121212;
+  color: #ffffff;
+}
+
+body.dark table {
+  background: #1e1e1e;
+  color: white;
+}
+
+body.dark th {
+  background: #333;
+}
+
+body.dark td {
+  background: #222;
+  border-color: #444;
+}
+
+body.dark input {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark select {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark button {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark .dropdown {
+  background: #1e1e1e;
+  border-color: #444;
+  color: white;
+}
+
+body.dark .dropdown div:hover {
+  background: #2a2a2a;
+}
+
+body.dark #loginScreen {
+  background: #1e1e1e;
+  border-color: #444;
 }
