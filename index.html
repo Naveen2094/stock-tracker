@@ -4,49 +4,21 @@
   <meta charset="UTF-8">
   <title>Stock Tracker</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 </head>
 <body>
+<div id="loginScreen">
+  <h1>Portfolio Tracker</h1>
+  <h2>Enter Name</h2>
+  <input id="username" placeholder="Your Name">
 
-<h1>📊 Stock Portfolio</h1>
+  <h3>Select Portfolio Type</h3>
+  <select id="portfolioType">
+    <option value="stocks">Stocks</option>
+    <option value="mf">Mutual Funds / ETFs</option>
+  </select>
 
-<div class="controls">
-  <div class="search-wrap">
-    <input id="ticker" placeholder="Search stock (e.g. ITC)">
-    <div id="suggestions" class="dropdown"></div>
-  </div>
-  <input id="qty" placeholder="Qty">
-  <input id="buy" placeholder="Buy Price">
-  <button onclick="addStock()">Add</button>
-  <button onclick="clearAll()">Clear All</button>
-  <button onclick="resetPortfolio()">Reset Portfolio</button>
-  <input type="file" id="excelFile" accept=".xlsx, .xls">
-  <button onclick="importExcel()">Import Excel</button>
+  <button onclick="startApp()">Start</button>
 </div>
-
-<table id="table">
-  <thead>
-    <tr>
-      <th>Stock</th>
-      <th>CMP</th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>52W High</th>
-      <th>52W Low</th>
-      <th>Qty</th>
-      <th>Buy</th>
-      <th>Investment</th>
-      <th>Value</th>
-      <th>P/L</th>
-      <th>Remove</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<h2 id="summary"></h2>
-<div id="failedList"></div>
 
 <script src="script.js"></script>
 </body>
